@@ -1,7 +1,7 @@
 const { Thought, User } = require('../models');
 
 module.exports = {
-  // Get all courses
+  // Get all thoughts
   async getThoughts(req, res) {
     console.log("Pinged my getThoughts route!")
     try {
@@ -10,9 +10,9 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Get a course
+  
 
-  // Create a course
+  // Create a thought
   async createThought(req, res) {
     console.log("Pinged my createThoughts route!")
     try {
@@ -21,9 +21,20 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Delete a course
+ // Delete a thought
+ async deleteThought(req, res) {
+  try {
+    const thought = await thought.findOneAndDelete({ _id: req.params.thoughtId });
 
-  // Update a course
-  
+    if (!thought) {
+      return res.status(404).json({ message: 'No thought with that ID' });
+    }
+
+    await user.deleteMany({ _id: { $in: thought.users } });
+    res.json({ message: 'thought and users deleted!' });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+},
 };
 
