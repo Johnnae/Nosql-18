@@ -1,4 +1,4 @@
-# 18 NoSQL: Social Network API
+# NoSQL: Social Network API
 
 ## User Story
 
