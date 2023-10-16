@@ -4,26 +4,28 @@ module.exports = {
   // Get all user
   async getUser(req, res) {
     console.log("Pinged my getUsers route!")
-    try {
-      res.json("Got Users!")
+    try { 
+      const userData = await User.find({}).populate('thoughts')
+      res.json(userData)
     } catch (err) {
       res.status(500).json(err);
     }
   },
-  // Get a course
+  
 
   // Create a user
   async createUser(req, res) {
     console.log("Pinged my createUsers route!")
-    try {
-      res.json("Need to create Users!")
+    try { 
+      const userData = await User.create(req.body)
+      res.json(userData)
     } catch (err) {
       res.status(500).json(err);
     }
   },
-  // Delete a course
+  // Delete a user 
 
-  // Update a course
+  
   
 };
 

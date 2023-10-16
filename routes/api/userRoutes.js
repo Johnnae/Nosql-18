@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const {
- getUsers,
+ getUser,
  createUser
 } = require('../../controllers/userController');
 "localhost:3001/api/users"
 // /api/students
-router.route('/').get(getUsers).post(createUser);
+router.route('/').get(getUser).post(createUser);
 
 // // /api/students/:studentId
 // router.route('/:studentId').get(getSingleStudent).delete(deleteStudent);
